@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function createWorker() {
+    const worker = new Worker('./test.js')
+    worker.onmessage = function (event) {
+      console.log('succ', event)
+    }
+
+    worker.onerror = function (event) {
+      console.log('err ', event)
+    }
+
+    worker.postMessage('执行1')
+  }
+
+  createWorker()
+  createWorker()
+  createWorker()
+  createWorker()
+  createWorker()
+</script>
